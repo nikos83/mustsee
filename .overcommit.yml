@@ -3,10 +3,6 @@ PreCommit:
    enabled: true
    on_warn: fail
 
- HamlLint:
-   enabled: true
-   on_warn: fail
-
  TrailingWhitespace:
    enabled: true
    exclude:
