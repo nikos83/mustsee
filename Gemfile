@@ -7,6 +7,7 @@ ruby '2.5.3'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '~> 4.1.3'
+gem 'devise'
 gem 'haml-rails', '~> 2.0', '>= 2.0.1'
 gem 'mini_racer', platforms: :ruby
 gem 'pg', '>= 0.18', '< 2.0'
