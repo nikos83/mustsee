@@ -25,6 +25,14 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'rspec-rails'
 end
+group :development do
+  gem 'capistrano'
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-rvm'
+  gem 'capistrano-sidekiq'
+  gem 'capistrano3-puma'
+end
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
