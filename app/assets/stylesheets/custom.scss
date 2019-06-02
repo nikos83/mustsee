@@ -2,3 +2,12 @@ li.nav-item{
   margin-left: 3px;
   margin-right: 3px;
 }
+.wrapper {
+  height: 100vh;
+  min-height: 500px;
+  background-image: url('bgimage.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 3000px rgba(31, 30, 31, 0.8) inset;
+}
