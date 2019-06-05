@@ -1,2 +1,5 @@
-%h1 Films#index
-%p Find me in app/views/films/index.html.haml
+.row
+  - @films.each do |film|
+    .col-sm-3
+      = film.title
+      = image_tag film.cover_img, class: 'img-fluid'
