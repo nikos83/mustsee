@@ -1,0 +1,8 @@
+= simple_form_for @film do |f|
+  = f.input :title, as: :string
+  = f.input :description, as: :string
+  = f.input :cover_img, as: :file
+
+  = f.input :film_link, as: :file
+  = f.button :submit
+  = link_to 'back', :back, class: 'btn btn-secondary'

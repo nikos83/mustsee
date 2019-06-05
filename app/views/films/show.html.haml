@@ -1,0 +1,8 @@
+%p= @film.title
+%p= @film.description
+=image_tag @film.cover_img
+= video_tag rails_blob_path(@film.film_link), controls: true
+= link_to t('destroy'), @film,
+  method: :delete, data: { confirm: t('are_you_sure') }, class: 'btn btn-danger'
+= link_to t('edit'), edit_film_path(@film), class: 'btn btn-success'
+= link_to t('back'), films_path, class: 'btn btn-secondary'
