@@ -1,3 +1,6 @@
 .text-center.text-white
-    %h1 Hello on MustSee!
-    %p You must see whats on it
+  %h1 Hello on MustSee!
+  %p You must see whats on it
+  - if user_signed_in?
+    %button.btn.btn-danger Add your movie
+

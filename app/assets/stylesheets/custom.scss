@@ -5,7 +5,7 @@ li.nav-item{
 .wrapper {
   height: 100vh;
   min-height: 500px;
-  background-image: url('bgimage.jpg');
+  background-image: url(asset_path('bgimage.jpg'));
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
