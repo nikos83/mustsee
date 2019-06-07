@@ -10,6 +10,7 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'devise'
 gem 'devise-bootstrap-views', '~> 1.0'
 gem 'haml-rails', '~> 2.0', '>= 2.0.1'
+gem 'jquery-rails'
 gem 'mini_racer', platforms: :ruby
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
