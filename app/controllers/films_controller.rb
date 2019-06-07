@@ -2,6 +2,7 @@
 
 class FilmsController < ApplicationController
   before_action :set_film, only: %i[show edit update destroy]
+  before_action :admin?, only: %i[new create edit update destroy]
 
   def index
     @films = Film.all
@@ -17,7 +18,6 @@ class FilmsController < ApplicationController
 
   def create
     @film = Film.new(film_params)
-    @user = current_user
 
     respond_to do |format|
       if @film.save
@@ -53,5 +53,9 @@ class FilmsController < ApplicationController
 
   def film_params
     params.require(:film).permit(:title, :description, :cover_img, :film_link)
+  end
+
+  def admin?
+    redirect_to @film, notice: 'Error! You are not permitted' unless current_user.try(:admin?)
   end
 end

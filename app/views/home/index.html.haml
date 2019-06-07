@@ -2,5 +2,6 @@
   %h1 Hello on MustSee!
   %p You must see whats on it
   - if user_signed_in?
-    %button.btn.btn-danger Add your movie
-
+    = link_to 'Browse now!', films_path, class:'btn btn-danger'
+  - if current_user.try(:admin?)
+    = link_to 'Add new movie', new_film_path, class:'btn btn-danger'
