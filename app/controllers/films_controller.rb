@@ -2,7 +2,7 @@
 
 class FilmsController < ApplicationController
   before_action :set_film, only: %i[show edit update destroy]
-  before_action :admin?, only: %i[new create edit update destroy]
+  # before_action :admin?, only: %i[new create edit update destroy]
 
   def index
     @films = Film.all
