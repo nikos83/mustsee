@@ -9,7 +9,8 @@ set :deploy_to, '/home/deploy/mustsee'
 set :pty, true
 set :linked_files, %w[config/database.yml config/application.yml config/master.key]
 set :linked_dirs, %w[ log tmp/pids tmp/cache tmp/sockets
-                      vendor/bundle public/system public/uploads]
+                      vendor/bundle public/system public/uploads
+                      storage]
 set :keep_releases, 5
 set :rvm_type, :user
 set :rvm_ruby_version, 'ruby-2.6.3' # Edit this to match ruby version you use
