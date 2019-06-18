@@ -3,7 +3,11 @@
 - if @film.film_link.attached?
   = video_tag rails_blob_path(@film.film_link), controls: true, width: '100%'
 %div
-  = link_to t('destroy'), @film,
-  method: :delete, data: { confirm: t('are_you_sure') }, class: 'btn btn-danger'
+  - if current_user.admin?
+    - if @film.film_link.attached?
+      = link_to t('Remove Film'), delete_film_link_attachment_film_url(@film.film_link.id),
+      method: :delete, data: {confirm: 'are you'}, class: 'btn btn-warning'
+    = link_to t('Delete all'), @film,
+    method: :delete, data: { confirm: t('are_you_sure') }, class: 'btn btn-danger'
   = link_to t('edit'), edit_film_path(@film), class: 'btn btn-success'
   = link_to t('back'), films_path, class: 'btn btn-secondary'
