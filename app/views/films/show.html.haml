@@ -5,7 +5,7 @@
 %div
   - if current_user.admin?
     = film.delete_link
-    = link_to t('Delete all'), @film,
-    method: :delete, data: { confirm: t('are_you_sure') }, class: 'btn btn-danger'
-    = link_to t('edit'), edit_film_path(@film), class: 'btn btn-success'
-  = link_to t('back'), films_path, class: 'btn btn-secondary'
+    = link_to 'Delete all', @film,
+    method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
+    = link_to 'Edit', edit_film_path(@film), class: 'btn btn-success'
+  = link_to 'Back', films_path, class: 'btn btn-secondary'
