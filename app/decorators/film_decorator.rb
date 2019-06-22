@@ -3,12 +3,12 @@
 class FilmDecorator < Draper::Decorator
   delegate_all
 
-  # Define presentation-specific methods here. Helpers are accessed through
-  # `helpers` (aka `h`). You can override attributes, for example:
-  #
-  #   def created_at
-  #     helpers.content_tag :span, class: 'time' do
-  #       object.created_at.strftime("%a %m/%d/%y")
-  #     end
-  #   end
+  def delete_link
+    - if object.film_link.attached?
+        h.link_to 'Remove Film', h.delete_film_link_attachment_film_url(object.film_link.id),
+                  method: :delete, data: { confirm: 'are_you_sure' }, class: 'btn btn-warning'
+      else
+        'No film attached'
+      end
+  end
 end
