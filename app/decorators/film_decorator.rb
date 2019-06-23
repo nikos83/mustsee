@@ -5,7 +5,7 @@ class FilmDecorator < Draper::Decorator
 
   def delete_link
     - if object.film_link.attached?
-        h.link_to 'Remove Film', h.delete_film_link_attachment_film_url(object.film_link.id),
+        h.link_to 'Delete Film', h.film_attachment_path(object, object.film_link.id),
                   method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-warning'
       else
         'No film attached'
