@@ -2,9 +2,7 @@
 
 Rails.application.routes.draw do
   resources :films do
-    member do
-      delete :delete_film_link_attachment
-    end
+    resources :attachments, only: :destroy
   end
   devise_for :users
   root to: 'home#index'

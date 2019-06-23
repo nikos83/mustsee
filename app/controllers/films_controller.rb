@@ -47,12 +47,6 @@ class FilmsController < ApplicationController
     end
   end
 
-  def delete_film_link_attachment
-    @film_link = ActiveStorage::Attachment.find(params[:id])
-    @film_link.purge
-    redirect_back(fallback_location: films_path)
-  end
-
   private
 
   def set_film
