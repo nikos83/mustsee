@@ -5,9 +5,6 @@ require 'rails_helper'
 RSpec.describe FilmsController, type: :controller do
   describe 'GET #index' do
     it 'populates an array of films' do
-      let(:films) { create(:film) }
-      get :index
-      assigns(:films).should eq([film])
     end
   end
 
