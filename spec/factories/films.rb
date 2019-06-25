@@ -4,11 +4,8 @@ FactoryBot.define do
   factory :film do
     title { Faker::Lorem.word }
     description { Faker::Lorem.sentence(3, true) }
-    cover_img do
-      temp.photo.attach(
-        io: File.open('storage/Mf/nZ/MfnZE5xKX6yaGStkK9YmvxgU'),
-        filename: 'file.png'
-      )
+    trait :cover_img do
+      cover_img { fixture_file_upload(Rails.root.join('spec', 'assets', 'test.jpg'), 'image/jpg') }
     end
   end
 end

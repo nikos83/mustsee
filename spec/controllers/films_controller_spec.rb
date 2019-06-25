@@ -3,8 +3,12 @@
 require 'rails_helper'
 
 RSpec.describe FilmsController, type: :controller do
+  render_views
+  let(:film) { create :film, :cover_img }
   describe 'GET #index' do
     it 'populates an array of films' do
+      get :index
+      expect(film).to eq(film)
     end
   end
 
