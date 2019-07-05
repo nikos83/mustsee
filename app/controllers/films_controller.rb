@@ -58,6 +58,6 @@ class FilmsController < ApplicationController
   end
 
   def admin?
-    redirect_to @film, notice: 'Error! You are not permitted' unless current_user.try(:admin?)
+    redirect_to films_url, notice: 'Error! You are not permitted' unless current_user.try(:admin?)
   end
 end

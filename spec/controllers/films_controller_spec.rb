@@ -4,33 +4,80 @@ require 'rails_helper'
 
 RSpec.describe FilmsController, type: :controller do
   render_views
-  let(:film) { create :film, :cover_img }
-  describe 'GET #index' do
-    it 'populates an array of films' do
-      get :index
-      expect(film).to eq(film)
+  let!(:film) { create :film, :cover_img }
+  describe 'not logged in' do
+    describe 'get #index' do
+      before do
+        get :index
+      end
+      it 'redirect to login page' do
+        expect(response.status).to be 302
+      end
+    end
+
+    describe 'get #show page' do
+      before do
+        get :show, params: { id: film }
+      end
+      it 'redirect with message' do
+        expect(response.body).to have_content('You are being redirected.')
+      end
+
+      it 'redirect to login page' do
+        expect(response.status).to be 302
+      end
+    end
+
+    describe 'GET #new' do
+      before do
+        get :new
+      end
+      it 'redirects to login page' do
+        expect(response.status).to be 302
+      end
+    end
+
+    describe 'GET #edit' do
+      before do
+        get :edit, params: { id: film }
+      end
+      it 'redirects to login page' do
+        expect(response.status).to be 302
+      end
+    end
+
+    describe 'post #delete' do
+      before do
+        post :destroy, params: { id: film }
+      end
+      it 'redirects to login page' do
+        expect(response.status).to be 302
+      end
     end
   end
 
-  describe 'GET #show' do
-    it 'assigns the requested contact to @contact'
-    it 'renders the :show template'
-  end
+  describe 'logged in as user' do
+    login_user
+    describe 'get #index' do
+      before do
+        get :index
+      end
+      it 'returns correct response' do
+        expect(response.status).to be 200
+      end
 
-  describe 'GET #new' do
-    it 'assigns a new Contact to @contact'
-    it 'renders the :new template'
-  end
-
-  describe 'POST #create' do
-    context 'with valid attributes' do
-      it 'saves the new contact in the database'
-      it 'redirects to the home page'
+      it 'returns film' do
+        expect(response.body).to have_content(film.title)
+      end
     end
 
-    context 'with invalid attributes' do
-      it 'does not save the new contact in the database'
-      it 're-renders the :new template'
+    describe 'GET #show' do
+      before do
+        get :show, params: { id: film }
+      end
+      it 'show created film' do
+        expect(response.body).to have_content(film.description)
+      end
     end
   end
 end
