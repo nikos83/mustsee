@@ -14,7 +14,7 @@ RSpec.describe FilmsController, type: :controller do
         expect(response.status).to be 302
       end
     end
-
+    
     describe 'get #show page' do
       before do
         get :show, params: { id: film }

@@ -3,7 +3,7 @@
 class FilmsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_film, only: %i[show edit update destroy]
-  before_action :admin?, only: %i[new create edit update destroy]
+  before_action :redirect_unauthorized_user, only: %i[new create edit update destroy]
   decorates_assigned :film
 
   def index
@@ -57,7 +57,7 @@ class FilmsController < ApplicationController
     params.require(:film).permit(:title, :description, :cover_img, :film_link)
   end
 
-  def admin?
-    redirect_to films_url, notice: 'Error! You are not permitted' unless current_user.try(:admin?)
+  def redirect_unauthorized_user
+    redirect_to films_url, notice: 'Error! You are not permitted' unless current_user.try(:redirect_unauthorized_user)
   end
 end
