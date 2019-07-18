@@ -14,7 +14,9 @@ ActiveRecord::Migration.maintain_test_schema!
 FactoryBot::SyntaxRunner.class_eval do
   include ActionDispatch::TestProcess
 end
+
 require_relative 'support/controller_macros'
+
 RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -32,11 +34,13 @@ RSpec.configure do |config|
       example.run
     end
   end
+
   Shoulda::Matchers.configure do |c|
     c.integrate do |with|
       with.test_framework :rspec
       with.library :rails
     end
   end
+
   config.include Capybara::DSL
 end
