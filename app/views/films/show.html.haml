@@ -3,7 +3,7 @@
 - if @film.film_link.attached?
   = video_tag rails_blob_path(@film.film_link), controls: true, width: '100%'
 %div
-  - if current_user.admin?
+  - if current_user.try(:admin?)
     = film.delete_link
     = link_to 'Delete all', @film,
     method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
