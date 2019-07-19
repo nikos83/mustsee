@@ -27,7 +27,7 @@ RSpec.describe FilmsController, type: :controller do
         expect(response.status).to be 200
       end
 
-      it 'return films' do
+      it 'returns films' do
         expect(response.body).to have_content(film.title)
       end
     end
@@ -42,7 +42,7 @@ RSpec.describe FilmsController, type: :controller do
         expect(response.status).to be 200
       end
 
-      it 'return films' do
+      it 'returns films' do
         expect(response.body).to have_content(film.title)
       end
     end
@@ -69,7 +69,7 @@ RSpec.describe FilmsController, type: :controller do
         expect(response.status).to be 200
       end
 
-      it 'return films' do
+      it 'returns films' do
         expect(response.body).to have_content(film.title)
       end
     end
@@ -84,7 +84,7 @@ RSpec.describe FilmsController, type: :controller do
         expect(response.status).to be 200
       end
 
-      it 'return films' do
+      it 'returns films' do
         expect(response.body).to have_content(film.title)
       end
 
