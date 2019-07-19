@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class Film < ApplicationRecord
-  has_one_attached :cover_img
-  has_one_attached :film_link
+  has_one_attached :cover_img, dependent: :purge_later
+  has_one_attached :film_link, dependent: :purge_later
   validates :title, presence: true
   validate :check_cover
 

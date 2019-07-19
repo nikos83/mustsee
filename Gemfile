@@ -9,6 +9,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '~> 4.3.1'
 gem 'devise'
 gem 'devise-bootstrap-views', '~> 1.0'
+gem 'draper'
 gem 'haml-rails', '~> 2.0', '>= 2.0.1'
 gem 'jquery-rails'
 gem 'mini_racer', platforms: :ruby
@@ -24,7 +25,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'turbolinks', '~> 5'
 
 group :development, :test do
-  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'capybara'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'pry', '~> 0.12.2'
   gem 'rspec-rails'
 end
 group :development do
@@ -42,6 +46,12 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
+end
+
+group :test do
+  gem 'database_cleaner'
+  gem 'rails-controller-testing'
+  gem 'shoulda-matchers'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
