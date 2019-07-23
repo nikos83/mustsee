@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
 class Film < ApplicationRecord
+  extend FriendlyId
   has_one_attached :cover_img, dependent: :purge_later
   has_one_attached :film_link, dependent: :purge_later
   validates :title, presence: true
   validate :check_cover
-  extend FriendlyId
+  validates :slug, presence: true, uniqueness: true, allow_nil: false
 
   friendly_id :title, use: :slugged
 
