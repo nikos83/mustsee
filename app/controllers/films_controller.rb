@@ -50,7 +50,7 @@ class FilmsController < ApplicationController
   private
 
   def set_film
-    @film = Film.find(params[:id])
+    @film = Film.friendly.find(params[:id])
   end
 
   def film_params

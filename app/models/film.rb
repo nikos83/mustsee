@@ -5,6 +5,9 @@ class Film < ApplicationRecord
   has_one_attached :film_link, dependent: :purge_later
   validates :title, presence: true
   validate :check_cover
+  extend FriendlyId
+
+  friendly_id :title, use: :slugged
 
   private
 
