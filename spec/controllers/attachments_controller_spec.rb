@@ -6,11 +6,21 @@ RSpec.describe AttachmentsController, type: :controller do
   render_views
   let!(:film) { create :film, :cover_img, :film_link }
 
-  # context 'when admin is logged in' do
-  #   login_admin
-  #   it 'delete attachment' do
-  #     expect { delete :destroy, params: { film_link: film.film_link.id } }.to
-  # change(ActiveStorage::Attachment, :count).by(1)
-  #   end
-  # end
+  describe 'admin is logged in' do
+    login_admin
+
+    context 'when nothing is done' do
+      it 'returns 2 attachments' do
+        expect(ActiveStorage::Attachment.count).to eq(2)
+      end
+    end
+
+    context 'when one attachment is deleted' do
+      before { delete :destroy, params: { id: film.film_link.id, film_id: film.id } }
+
+      it 'returns 1 attachment' do
+        expect(ActiveStorage::Attachment.count).to eq(1)
+      end
+    end
+  end
 end
