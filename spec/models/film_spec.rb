@@ -8,49 +8,35 @@ RSpec.describe Film, type: :model do
   it { should validate_presence_of(:slug) }
   it { should validate_uniqueness_of(:slug) }
 
-  context 'attachemt check for cover' do
-    it 'should be valid with correct type' do
-      Film.new(title: 'First title',
-               description: 'test',
-               cover_img: fixture_file_upload(Rails.root.join('spec', 'assets', 'test.jpg'),
-                                              'image/jpg')).should be_valid
+  context 'when attachments type is correct' do
+    it 'is valid with correct cover' do
+      build(:film, :cover_img).should be_valid
     end
 
-    it 'should be invalid with wrong type of film_link' do
-      Film.new(title: 'First title',
-               description: 'test',
-               cover_img: fixture_file_upload(Rails.root.join('spec', 'assets', 'test.jpg'),
-                                              'image/jpg'),
-               film_link: fixture_file_upload(Rails.root.join('spec', 'assets', 'test.jpg'),
-                                              'image/jpg')).should_not be_valid
+    it 'is valid with correct film' do
+      build(:film, :cover_img, :film_link).should be_valid
     end
 
-    it 'should valid with good film_link' do
-      Film.new(title: 'First title',
-               description: 'test',
-               cover_img: fixture_file_upload(Rails.root.join('spec', 'assets', 'test.jpg'),
-                                              'image/jpg'),
-               film_link: fixture_file_upload(Rails.root.join('spec', 'assets', 'test.mp4'),
-                                              'image/jpg')).should be_valid
+    it 'it is valid with film nil' do
+      build(:film, :cover_img, :film_link_nil).should be_valid
+    end
+  end
+
+  context 'when attachments type is not correct' do
+    it 'is invalid with wrong film' do
+      build(:film, :cover_img, :film_link_wrong).should_not be_valid
     end
 
-    it 'should valid without film_link' do
-      Film.new(title: 'First title',
-               description: 'test',
-               cover_img: fixture_file_upload(Rails.root.join('spec', 'assets', 'test.jpg'),
-                                              'image/jpg')).should be_valid
-    end
-
-    it 'should be invalid with not correct type' do
-      Film.new(title: 'First title',
-               description: 'test',
-               cover_img: fixture_file_upload(Rails.root.join('spec', 'assets', 'test.txt'))).should_not be_valid
+    it 'is invalid with wrong cover' do
+      build(:film, :cover_img_wrong).should_not be_valid
     end
 
     it 'should be invalid without cover' do
-      Film.new(title: 'First title',
-               description: 'test',
-               cover_img: nil).should_not be_valid
+      build(:film, :cover_img_nil).should_not be_valid
+    end
+
+    it 'should be invalid with wrong film and cover' do
+      build(:film, :cover_img_nil, :film_link_wrong).should_not be_valid
     end
   end
 end
