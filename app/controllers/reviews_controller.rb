@@ -2,6 +2,7 @@
 
 class ReviewsController < ApplicationController
   before_action :find_film
+  decorates_assigned :film
 
   def create
     @review = @film.reviews.create(review_params)

@@ -3,3 +3,5 @@
     .col-sm-3
       = link_to film.title, film_path(film)
       = link_to image_tag(film.cover_img, class:'img-fluid'), film_path(film)
+      %p
+      Average ratings: #{film.reviews.average(:rating).round(2) if film.reviews.exists?}
