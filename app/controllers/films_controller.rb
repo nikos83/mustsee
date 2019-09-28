@@ -10,7 +10,9 @@ class FilmsController < ApplicationController
     @films = Film.all
   end
 
-  def show; end
+  def show
+    @review = Review.new
+  end
 
   def new
     @film = Film.new
