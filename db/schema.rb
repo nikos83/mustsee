@@ -41,12 +41,12 @@ ActiveRecord::Schema.define(version: 2019_09_17_122613) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "slug"
+    t.string "slug", null: false
     t.index ["slug"], name: "index_films_on_slug", unique: true
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer "rating"
+    t.integer "rating", null: false
     t.text "review_body"
     t.bigint "user_id"
     t.bigint "film_id"

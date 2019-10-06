@@ -5,6 +5,7 @@ class Film < ApplicationRecord
   has_one_attached :cover_img, dependent: :purge_later
   has_one_attached :film_link, dependent: :purge_later
   has_many :reviews, dependent: :destroy
+
   validates :title, presence: true
   validate :check_cover, :check_film
   validates :slug, presence: true, uniqueness: true, allow_nil: false

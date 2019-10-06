@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
   decorates_assigned :film
 
   def create
-    @review = @film.reviews.create(review_params)
+    @review = @film.reviews.new(review_params)
     @review.user_id = current_user.id
     if @review.save
       redirect_to film_path(@film), notice: 'Success'
