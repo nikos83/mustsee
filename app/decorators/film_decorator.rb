@@ -11,4 +11,8 @@ class FilmDecorator < Draper::Decorator
       'No film attached'
     end
   end
+
+  def rating_avg
+    'Average ratings: ' + object.reviews.average(:rating).round(2).to_s if object.reviews.exists?
+  end
 end

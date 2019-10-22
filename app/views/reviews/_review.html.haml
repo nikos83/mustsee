@@ -1,0 +1,8 @@
+.card{:style => "width:400px"}
+  .card-body
+    %h4.card-title= review.user.email
+    %p.card-text
+      Rating: #{review.rating}
+      %br/
+      Review: #{review.review_body}
+%br/

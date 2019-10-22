@@ -7,10 +7,12 @@ class FilmsController < ApplicationController
   decorates_assigned :film
 
   def index
-    @films = Film.all
+    @films = Film.all.decorate
   end
 
-  def show; end
+  def show
+    @review = Review.new
+  end
 
   def new
     @film = Film.new
