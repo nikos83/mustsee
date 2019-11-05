@@ -1,6 +1,6 @@
 %h1.film-name= @film.title
 - if @film.film_link.attached?
-  = video_tag rails_blob_path(@film.film_link), controls: true, id: 'mustsee-video', onload: 'wideoOnLoad()'
+  = video_tag rails_blob_path(@film.film_link), controls: true, id: 'mustsee-video'
 %p= @film.description
 %div
   - if current_user.try(:admin?)
