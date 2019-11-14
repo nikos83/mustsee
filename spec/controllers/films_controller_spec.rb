@@ -17,6 +17,17 @@ RSpec.describe FilmsController, type: :controller do
       end
     end
 
+    context "when user isn't confirmed" do
+      login_unconfirmed
+      before do
+        get :index
+      end
+
+      it 'have correct response' do
+        expect(response.status).to be 302
+      end
+    end
+
     context 'when user is logged in' do
       login_user
       before do
@@ -55,6 +66,17 @@ RSpec.describe FilmsController, type: :controller do
       end
 
       it 'redirects to login page' do
+        expect(response.status).to be 302
+      end
+    end
+
+    context "when user isn't confirmed" do
+      login_unconfirmed
+      before do
+        get :show, params: { id: film.id }
+      end
+
+      it 'have correct response' do
         expect(response.status).to be 302
       end
     end
@@ -109,6 +131,17 @@ RSpec.describe FilmsController, type: :controller do
       end
     end
 
+    context "when user isn't confirmed" do
+      login_unconfirmed
+      before do
+        get :new
+      end
+
+      it 'redirects to login page' do
+        expect(response.status).to be 302
+      end
+    end
+
     context 'when user is logged in' do
       login_user
       before do
@@ -146,6 +179,18 @@ RSpec.describe FilmsController, type: :controller do
         expect(response.status).to be 302
       end
     end
+
+    context "when user isn't confirmed" do
+      login_unconfirmed
+      before do
+        get :edit, params: { id: film }
+      end
+
+      it 'redirects to login page' do
+        expect(response.status).to be 302
+      end
+    end
+
     context 'when user is logged in' do
       login_user
       before do
@@ -188,6 +233,19 @@ RSpec.describe FilmsController, type: :controller do
         expect(flash[:alert]).to eql('You need to sign in or sign up before continuing.')
       end
     end
+
+    context "when user isn't confirmed" do
+      login_unconfirmed
+      before do
+        post :destroy, params: { id: film }
+      end
+
+      it 'redirects to login with notice' do
+        expect(response.status).to be 302
+        expect(flash[:alert]).to eql('You have to confirm your email address before continuing.')
+      end
+    end
+
     context 'when user is logged in' do
       login_user
       before do
