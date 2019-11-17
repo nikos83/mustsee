@@ -2,8 +2,7 @@
   = f.error_notification
   = f.input :title, as: :string
   = f.input :description, as: :string
-  = f.input :cover_img, as: :file
-
-  = f.input :film_link, as: :file
+  = f.input :cover_img, as: :file, input_html: { data: { direct_upload_url: '/rails/active_storage/direct_uploads' } }
+  = f.input :film_link, as: :file, input_html: { data: { direct_upload_url: '/rails/active_storage/direct_uploads' } }
   = f.button :submit
   = link_to 'back', :back, class: 'btn btn-secondary'
