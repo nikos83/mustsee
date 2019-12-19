@@ -4,8 +4,7 @@ module Users
   class RegistrationsController < Devise::RegistrationsController
     def create
       super
-      @admin = User.where(admin: true).first
-      AdminNotifierMailer.notify_admin(@admin, @user).deliver_later if @user.persisted?
+      NotificationService.new.registration_info(@user) if @user.persisted?
     end
   end
 end
