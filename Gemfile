@@ -17,7 +17,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'mini_racer', platforms: :ruby
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 3.12.2'
+gem 'puma', '~> 4.3.1'
 gem 'rails', '~> 5.2.3'
 gem 'sass-rails', '~> 5.0'
 gem 'sidekiq', '~>6.0.2'
