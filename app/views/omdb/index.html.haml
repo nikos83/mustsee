@@ -1,0 +1,7 @@
+%div
+  - @film.search.parsed_response['Search'].each do |film|
+    %div
+      %p
+        = film['Title']
+      %p
+        %img{:src => "#{film['Poster']}"}/

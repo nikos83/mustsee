@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'omdb/index'
+  get 'omdb/search'
   resources :films do
     resources :attachments, only: :destroy
     resources :reviews
+    get 'search'
   end
   devise_for :users, controllers: {
     registrations: 'users/registrations'
