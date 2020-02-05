@@ -5,7 +5,7 @@ class OmdbService
   base_uri 'www.omdbapi.com'
 
   def initialize(title, year)
-    @options = { query: { s: title, y: year, apikey: Rails.application.credentials.dig(:omdb, :apikey) } }
+    @options = { query: { t: title, y: year, apikey: Rails.application.credentials.dig(:omdb, :apikey) } }
   end
 
   def search
