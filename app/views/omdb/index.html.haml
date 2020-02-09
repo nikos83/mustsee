@@ -1,8 +1,0 @@
-%div
-  %div
-    %p
-      = @film.search.parsed_response['Title']
-    %p
-      = @film.search.parsed_response['Year']
-    %p
-      %img{:src => "#{@film.search.parsed_response['Poster']}"}/
