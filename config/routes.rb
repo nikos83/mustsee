@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :films do
     resources :attachments, only: :destroy
     resources :reviews
-    get 'search'
+    resources :omdb
   end
   devise_for :users, controllers: {
     registrations: 'users/registrations'

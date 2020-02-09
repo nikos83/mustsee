@@ -16,9 +16,16 @@ class FilmsController < ApplicationController
 
   def new
     @film = Film.new
+    @film_search = OmdbService.new(params[:search], params[:year])
+    return unless @film_search
+
+    @film.title = @film_search.search.parsed_response['Title']
+    @film.description = @film_search.search.parsed_response['Plot']
   end
 
-  def edit; end
+  def edit
+    @film_search = OmdbService.new(params[:search], params[:year])
+  end
 
   def create
     @film = Film.new(film_params)
