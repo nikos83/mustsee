@@ -1,8 +1,8 @@
 .row
   - @films.each do |film|
-    .col-sm-3
-      %p.text-center
+    .col-sm-3.text-center
+      %p
         = link_to film.title, film_path(film)
       = link_to image_tag(film.cover_img, class:'img-fluid'), film_path(film)
-      %p.text-center
+      %p
         = film.rating_avg
