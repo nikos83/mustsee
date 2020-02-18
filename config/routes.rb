@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   resources :films do
     resources :attachments, only: :destroy
     resources :reviews
-    resources :omdb, only: %i[index search]
   end
   devise_for :users, controllers: {
     registrations: 'users/registrations'
