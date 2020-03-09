@@ -15,4 +15,12 @@ class FilmDecorator < Draper::Decorator
   def rating_avg
     'Average ratings: ' + object.reviews.average(:rating).round(2).to_s if object.reviews.exists?
   end
+
+  def show_api_poster
+    if object.poster.present? && object.poster != 'N/A'
+      h.image_tag object.poster
+    else
+      object.error
+    end
+  end
 end
