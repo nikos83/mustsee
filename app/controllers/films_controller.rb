@@ -57,13 +57,14 @@ class FilmsController < ApplicationController
   def omdb_search
     return if params.values_at(:search, :year).include?(nil)
 
-    @film_search = FilmDecorator.new(OmdbService.new(params[:search], params[:year]))
+    @film_search = OmdbService.new(params[:search], params[:year]).search_result
+    @film_search = OmdbDecorator.new(@film_search)
     insert_data_into_inputs
   end
 
   def insert_data_into_inputs
-    @film.title = @film_search.title
-    @film.description = @film_search.plot
+    @film.title = @film_search.parsed_response['Title']
+    @film.description = @film_search.parsed_response['Plot']
   end
 
   def set_film

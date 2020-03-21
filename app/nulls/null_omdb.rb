@@ -2,6 +2,6 @@
 
 class NullOmdb
   def parsed_response
-    { 'Title' => 'Error', 'Poster' => 'N/A', 'Plot' => 'Error' }
+    { 'Error' => 'Something went wrong! Please find you log file for more details' }
   end
 end

@@ -16,24 +16,8 @@ class OmdbService
     inspect_errors(e)
   end
 
-  def result
+  def search_result
     search || NullOmdb.new
-  end
-
-  def poster
-    result.parsed_response['Poster']
-  end
-
-  def title
-    result.parsed_response['Title']
-  end
-
-  def plot
-    result.parsed_response['Plot']
-  end
-
-  def error
-    result.parsed_response['Error']
   end
 
   private
