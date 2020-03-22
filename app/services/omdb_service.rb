@@ -14,6 +14,7 @@ class OmdbService
     inspect_errors(e)
   rescue StandardError => e
     inspect_errors(e)
+    nil
   end
 
   def search_result
@@ -23,6 +24,10 @@ class OmdbService
   private
 
   def inspect_errors(error)
-    puts error.inspect
+    logger.error error
+  end
+
+  def logger
+    @logger ||= ::Logger.new("log/#{Rails.env}.log")
   end
 end
