@@ -1,0 +1,71 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://www.omdbapi.com/?apikey=be993178&t=Terminator&y=2019
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 26 Mar 2020 08:24:09 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d21ec38a92eae5d501454edf5105b3c2f1585211049; expires=Sat, 25-Apr-20
+        08:24:09 GMT; path=/; domain=.omdbapi.com; HttpOnly; SameSite=Lax
+      Cache-Control:
+      - public, max-age=86400
+      Expires:
+      - Tue, 24 Mar 2020 19:29:37 GMT
+      Last-Modified:
+      - Tue, 24 Mar 2020 18:29:37 GMT
+      Vary:
+      - "*, Accept-Encoding"
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Access-Control-Allow-Origin:
+      - "*"
+      Cf-Cache-Status:
+      - HIT
+      Age:
+      - '136472'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 579f79422efdf2a4-WAW
+    body:
+      encoding: ASCII-8BIT
+      string: '{"Title":"Terminator: Dark Fate","Year":"2019","Rated":"R","Released":"01
+        Nov 2019","Runtime":"128 min","Genre":"Action, Adventure, Sci-Fi","Director":"Tim
+        Miller","Writer":"James Cameron (story by), Charles H. Eglee (story by), Josh
+        Friedman (story by), David S. Goyer (story by), Justin Rhodes (story by),
+        David S. Goyer (screenplay by), Justin Rhodes (screenplay by), Billy Ray (screenplay
+        by), James Cameron (based on characters created by), Gale Anne Hurd (based
+        on characters created by)","Actors":"Linda Hamilton, Arnold Schwarzenegger,
+        Mackenzie Davis, Natalia Reyes","Plot":"An augmented human and Sarah Connor
+        must stop an advanced liquid Terminator from hunting down a young girl, whose
+        fate is critical to the human race.","Language":"English, Spanish","Country":"China,
+        Spain, Hungary, USA","Awards":"1 win & 5 nominations.","Poster":"https://m.media-amazon.com/images/M/MV5BOWExYzVlZDgtY2E1ZS00NTFjLWFmZWItZjI2NWY5ZWJiNTE4XkEyXkFqcGdeQXVyMTA3MTA4Mzgw._V1_SX300.jpg","Ratings":[{"Source":"Internet
+        Movie Database","Value":"6.3/10"},{"Source":"Rotten Tomatoes","Value":"70%"},{"Source":"Metacritic","Value":"54/100"}],"Metascore":"54","imdbRating":"6.3","imdbVotes":"103,700","imdbID":"tt6450804","Type":"movie","DVD":"14
+        Jan 2020","BoxOffice":"N/A","Production":"Paramount Pictures","Website":"N/A","Response":"True"}'
+    http_version: null
+  recorded_at: Thu, 26 Mar 2020 08:24:10 GMT
+recorded_with: VCR 5.1.0

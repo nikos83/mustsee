@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://www.omdbapi.com/?apikey=be993178&t=&y=
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 26 Mar 2020 16:48:33 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d70eff0b69b9c5cede0d9147c2b26b9691585241313; expires=Sat, 25-Apr-20
+        16:48:33 GMT; path=/; domain=.omdbapi.com; HttpOnly; SameSite=Lax
+      Cache-Control:
+      - public, max-age=86400
+      Expires:
+      - Tue, 24 Mar 2020 19:27:17 GMT
+      Last-Modified:
+      - Tue, 24 Mar 2020 18:27:17 GMT
+      Vary:
+      - "*, Accept-Encoding"
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Access-Control-Allow-Origin:
+      - "*"
+      Cf-Cache-Status:
+      - HIT
+      Age:
+      - '166875'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 57a25c218856cc8b-WAW
+    body:
+      encoding: ASCII-8BIT
+      string: '{"Response":"False","Error":"Something went wrong."}'
+    http_version: null
+  recorded_at: Thu, 26 Mar 2020 16:48:33 GMT
+recorded_with: VCR 5.1.0
