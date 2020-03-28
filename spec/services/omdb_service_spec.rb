@@ -22,8 +22,9 @@ RSpec.describe OmdbService do
     let(:omdb_response_body) { nil }
 
     it 'fetches error from nullobject' do
-      expect(omdb_service.search_result.parsed_response['Error']).to eq('
-        Something went wrong! Please find you log file for more details')
+      expect(omdb_service.search_result.parsed_response['Error']).to eq(
+        'Something went wrong! Please find you log file for more details'
+      )
     end
   end
 end
