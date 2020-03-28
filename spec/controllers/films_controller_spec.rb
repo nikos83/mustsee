@@ -266,4 +266,77 @@ RSpec.describe FilmsController, type: :controller do
       end
     end
   end
+
+  describe 'Search api' do
+    context "when user isn't logged in" do
+      before do
+        get :new, params: { search: 'Terminator', year: '2019' }
+      end
+
+      it 'redirects to login with notice' do
+        expect(response.status).to be 302
+        expect(flash[:alert]).to eql('You need to sign in or sign up before continuing.')
+      end
+    end
+
+    context "when user isn't confirmed" do
+      login_unconfirmed
+      before do
+        get :new, params: { search: 'Terminator', year: '2019' }
+      end
+
+      it 'redirects to login with notice' do
+        expect(response.status).to be 302
+        expect(flash[:alert]).to eql('You have to confirm your email address before continuing.')
+      end
+    end
+
+    context 'when user is logged in' do
+      login_user
+      before do
+        get :new, params: { search: 'Terminator', year: '2019' }
+      end
+
+      it 'have correct response' do
+        expect(response.status).to be 302
+      end
+    end
+    context 'when admin logged in' do
+      login_admin
+
+      it 'should place results into input and picture' do
+        VCR.use_cassette('omdb/terminator_2019') do
+          get :new, params: { search: 'Terminator', year: '2019' }
+          expect(response.body).to have_selector("input[value='Terminator: Dark Fate']")
+          expect(response.body).to have_selector('img')
+        end
+      end
+      it 'should show error' do
+        VCR.use_cassette('omdb/empty_string') do
+          get :new, params: { search: '', year: '' }
+          expect(response.body).to have_content('Something went wrong.')
+        end
+      end
+      it 'should return not found' do
+        VCR.use_cassette('omdb/wrong_params') do
+          get :new, params: { search: 'Sadsau39@', year: '230293' }
+          expect(response.body).to have_content('Movie not found!')
+        end
+      end
+      it 'should return error' do
+        VCR.use_cassette('omdb/nil_params') do
+          get :new, params: { search: nil, year: nil }
+          expect(response.body).to have_content('Something went wrong.')
+        end
+      end
+
+      it 'should return error' do
+        VCR.use_cassette('omdb/terminator_1991') do
+          stub_request(:any, /omdbapi.com/).to_raise(StandardError)
+          get :new, params: { search: 'Terminator', year: '1991' }
+          expect(response.body).to have_content('Something went wrong! Please find you log file for more details')
+        end
+      end
+    end
+  end
 end
