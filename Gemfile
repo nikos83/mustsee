@@ -54,6 +54,8 @@ group :test do
   gem 'database_cleaner'
   gem 'rails-controller-testing'
   gem 'shoulda-matchers'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
