@@ -19,7 +19,7 @@ gem 'jquery-rails'
 gem 'mini_racer', platforms: :ruby
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.3.3'
-gem 'rails', '~> 5.2.3'
+gem 'rails', '~> 5.2.4.2'
 gem 'sass-rails', '~> 5.0'
 gem 'sidekiq', '~>5.2.7'
 gem 'simple_form'
