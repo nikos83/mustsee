@@ -1,4 +1,4 @@
-%h1.text-center= @film.title
+%h1.text-center.film-name= @film.title
 - if @film.film_link.attached?
   = video_tag rails_blob_path(@film.film_link), controls: true, id: 'mustsee-video'
 %p= @film.description
