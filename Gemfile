@@ -13,6 +13,7 @@ gem 'devise-bootstrap-views', '~> 1.0'
 gem 'draper'
 gem 'friendly_id'
 gem 'haml-rails', '~> 2.0', '>= 2.0.1'
+gem 'httparty', '~> 0.17.3'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'mini_racer', platforms: :ruby
@@ -53,6 +54,8 @@ group :test do
   gem 'database_cleaner'
   gem 'rails-controller-testing'
   gem 'shoulda-matchers'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

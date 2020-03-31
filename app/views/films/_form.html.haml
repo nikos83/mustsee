@@ -1,3 +1,11 @@
+= form_tag action_name, method: :get do
+  %label Search film:
+  .input-group.mb-3
+    = text_field_tag :search, params[:search], placeholder: 'Enter film title', class: 'form-control'
+    = text_field_tag :year, params[:year], placeholder: 'Enter film release year', class: 'form-control'
+    .input-group-append
+      %button.btn.btn-primary search
+= @film_search.show_api_poster if @film_search
 = simple_form_for @film do |f|
   = f.error_notification
   = f.input :title, as: :string
