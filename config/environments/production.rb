@@ -98,8 +98,8 @@ Rails.application.configure do
     address: 'smtp.sendgrid.net',
     port: 587,
     domain: 'mustsee.x25.pl',
-    user_name: 'apikey',
-    password: Rails.application.credentials.sendgrid[:apikey],
+    user_name: Rails.application.credentials.dig(:sendgrid, :username),
+    password: Rails.application.credentials.dig(:sendgrid, :passwd),
     authentication: 'plain',
     enable_starttls_auto: true
   }
