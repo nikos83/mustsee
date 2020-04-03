@@ -17,7 +17,7 @@ RSpec.describe AdminNotifierMailer, type: :mailer do
     end
 
     it 'renders the sender email' do
-      expect(mail.from).to eq(['from@example.com'])
+      expect(mail.from).to eq(['notification@mustsee.x25.pl'])
     end
 
     it 'assigns user email' do
