@@ -62,15 +62,15 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.active_job.queue_adapter = :sidekiq
-  # Gmail configuration
+  # Sendgrid configuration
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: 'smtp.gmail.com',
+    address: 'smtp.sendgrid.net',
     port: 587,
     domain: 'mustsee.x25.pl',
-    user_name: Rails.application.credentials.dig(:gmail, :username),
-    password: Rails.application.credentials.dig(:gmail, :passwd),
+    user_name: 'apikey',
+    password: Rails.application.credentials.sendgrid[:apikey],
     authentication: 'plain',
     enable_starttls_auto: true
   }

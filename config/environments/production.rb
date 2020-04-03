@@ -91,15 +91,15 @@ Rails.application.configure do
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
-  # Gmail configuration
+  # Sendgrid configuration
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: 'smtp.gmail.com',
+    address: 'smtp.sendgrid.net',
     port: 587,
     domain: 'mustsee.x25.pl',
-    user_name: Rails.application.credentials.dig(:gmail, :username),
-    password: Rails.application.credentials.dig(:gmail, :passwd),
+    user_name: 'apikey',
+    password: Rails.application.credentials.sendgrid[:apikey],
     authentication: 'plain',
     enable_starttls_auto: true
   }
