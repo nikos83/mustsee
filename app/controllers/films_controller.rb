@@ -65,6 +65,7 @@ class FilmsController < ApplicationController
   def insert_data_into_inputs
     @film.title = @film_search.parsed_response['Title']
     @film.description = @film_search.parsed_response['Plot']
+    @film.genre = omdb_genre(@film_search.parsed_response['Genre'])
   end
 
   def set_film
@@ -73,5 +74,13 @@ class FilmsController < ApplicationController
 
   def film_params
     params.require(:film).permit(:title, :description, :cover_img, :film_link)
+  end
+
+  def omdb_genre(genre)
+    if genre.include?(',')
+      genre.delete(' ').split(',')
+    else
+      [genre]
+    end
   end
 end
