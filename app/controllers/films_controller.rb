@@ -7,7 +7,7 @@ class FilmsController < ApplicationController
   decorates_assigned :film
 
   def index
-    @films = Film.all.decorate
+    params[:genre].nil? ? @films = Film.all.decorate : set_films_by_genre
   end
 
   def show
@@ -73,7 +73,7 @@ class FilmsController < ApplicationController
   end
 
   def film_params
-    params.require(:film).permit(:title, :description, :cover_img, :film_link)
+    params.require(:film).permit(:title, :description, :cover_img, :film_link, genre: [])
   end
 
   def omdb_genre(genre)
@@ -81,6 +81,21 @@ class FilmsController < ApplicationController
       genre.delete(' ').split(',')
     else
       [genre]
+    end
+  end
+
+  def sort_films
+    @films = []
+    Film.all.each do |film|
+      (@films << film) if (film.genre & params[:genre]).sort == params[:genre].sort
+    end
+  end
+
+  def set_films_by_genre
+    if (Film::GENRES & params[:genre]).sort == params[:genre].sort
+      sort_films
+    else
+      redirect_to films_url, notice: 'There isn\'t such genre.'
     end
   end
 end
