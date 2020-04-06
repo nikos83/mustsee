@@ -15,6 +15,11 @@ class Film < ApplicationRecord
 
   private
 
+  GENRES = ['Action', 'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime',
+            'Documentary', 'Drama', 'Family', 'Fantasy', 'Film-Noir', 'Game-Show',
+            'History', 'Horror', 'Music', 'Musical', 'Mystery', 'News', 'Reality-TV',
+            'Romance', 'Sci-Fi', 'Sport', 'Talk-Show', 'Thriller', 'War', 'Western'].freeze
+
   def check_cover
     if cover_img.attached? && !cover_img.attachment.blob.content_type.in?(%w[image/png image/jpeg])
       errors.add(:cover_img, 'Must be an image file')
