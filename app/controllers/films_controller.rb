@@ -65,7 +65,7 @@ class FilmsController < ApplicationController
   def insert_data_into_inputs
     @film.title = @film_search.parsed_response['Title']
     @film.description = @film_search.parsed_response['Plot']
-    @film.genre = omdb_genre(@film_search.parsed_response['Genre'])
+    @film.genre = omdb_genre(@film_search.parsed_response['Genre']) unless @film_search.parsed_response['Genre'].nil?
   end
 
   def set_film
