@@ -85,10 +85,7 @@ class FilmsController < ApplicationController
   end
 
   def sort_films
-    @films = []
-    Film.all.each do |film|
-      (@films << film) if (film.genre & params[:genre]).sort == params[:genre].sort
-    end
+    @films = Film.where('genre @> ARRAY[?]::varchar[]', params[:genre]).decorate
   end
 
   def set_films_by_genre

@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2020_04_06_152124) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug", null: false
-    t.text "genre"
+    t.string "genre", default: [], array: true
     t.index ["slug"], name: "index_films_on_slug", unique: true
   end
 

@@ -10,7 +10,7 @@
   = f.error_notification
   = f.input :title, as: :string
   = f.input :description, as: :string
-  = f.input :genre, as: :check_boxes, collection: Film::GENRES, checked: (@film.genre if !@film.genre.empty?), wrapper: :vertical_collection_inline
+  = f.input :genre, as: :check_boxes, collection: Film::GENRES, checked: (@film.genre if !@film.genre.nil?), wrapper: :vertical_collection_inline
   = f.input :cover_img, as: :file, input_html: { data: { direct_upload_url: '/rails/active_storage/direct_uploads' } }
   = f.input :film_link, as: :file, input_html: { data: { direct_upload_url: '/rails/active_storage/direct_uploads' } }
   = f.button :submit

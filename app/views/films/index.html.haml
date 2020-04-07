@@ -5,6 +5,4 @@
         = link_to film.title, film_path(film)
       = link_to image_tag(film.cover_img, class:'img-fluid'), film_path(film)
       %p
--# When params[:genre] exist @films is array, not activerecord relation so rating_avg doesn't work
--# Probably issue is that decorator is set for object, will be fixed in next commits
--#        = film.rating_avg
+      = film.rating_avg

@@ -11,7 +11,6 @@ class Film < ApplicationRecord
   validates :slug, presence: true, uniqueness: true, allow_nil: false
 
   friendly_id :title, use: :slugged
-  serialize :genre, Array
 
   private
 
